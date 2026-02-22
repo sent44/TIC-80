@@ -209,6 +209,14 @@ jobs:
           cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DBUILD_SDLGPU=On -DBUILD_PRO=On -DBUILD_WITH_ALL=ON ..
           cmake --build . --config MinSizeRel --parallel
 
+      - name: Deploy Pro
+        uses: actions/upload-artifact@v4
+        with:
+          name: "tic80-linux-gcc14-pro"
+          path: |
+            build/bin/tic80
+            build/bin/*.so
+
   # === Raspberry PI 1-4 Bare Metal ===
   rpi-baremetal:
     runs-on: ubuntu-latest
